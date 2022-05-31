@@ -1,0 +1,17 @@
+<!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="index" appConnect="local" components="{dmxFormRepeat:{},dmxDataTraversal:{},dmxFormatter:{}}" -->
+<dmx-serverconnect id="get_options" url="/api/get_options"></dmx-serverconnect>
+<dmx-array id="chosen_ids"></dmx-array>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div dmx-repeat:repeat1="3">
+                <dmx-value id="selected_id"></dmx-value>
+                <select id="select1" class="form-select" dmx-bind:options="get_options.data.options.excludeFilter(chosen_ids.items, selected_id.value)" optiontext="title" optionvalue="id" dmx-on:changed="chosen_ids.addUniq(value.toNumber());selected_id.setValue(value.toNumber())" dmx-bind:value="selected_id.value" dmx-on:change="chosen_ids.remove(value.toNumber())">
+                    <option value="">Select</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<meta name="ac:route" content="/">

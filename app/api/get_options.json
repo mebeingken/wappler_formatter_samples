@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
+      }
+    ]
+  },
+  "exec": {
+    "steps": {
+      "name": "options",
+      "module": "dbconnector",
+      "action": "select",
+      "options": {
+        "connection": "db",
+        "sql": {
+          "type": "SELECT",
+          "columns": [
+            {
+              "table": "options",
+              "column": "id"
+            },
+            {
+              "table": "options",
+              "column": "title"
+            }
+          ],
+          "table": {
+            "name": "options"
+          },
+          "primary": "id",
+          "joins": [],
+          "query": "SELECT id, title\nFROM options",
+          "params": []
+        }
+      },
+      "output": true,
+      "meta": [
+        {
+          "type": "number",
+          "name": "id"
+        },
+        {
+          "type": "text",
+          "name": "title"
+        }
+      ],
+      "outputType": "array"
+    }
+  }
+}
